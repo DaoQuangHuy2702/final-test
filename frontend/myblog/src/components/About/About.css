@@ -1,0 +1,43 @@
+.about {
+    width: 735px;
+    border-radius: 7px;
+    background-color: #ffffff;
+    padding: 35px 25px 20px 25px;
+    margin-bottom: 30px;
+}
+
+.about-me {
+    margin-bottom: 50px;
+}
+
+.about-me p{
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    line-height: 2.3rem;
+}
+
+.about-me .about-title{
+    font-size: 4rem;
+}
+
+.something-else .something-title {
+    font-size: 3.5rem;
+}
+
+.something-else p{
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    line-height: 2.3rem;
+}
+
+.get-in-touch {
+    padding: 13px 25px;
+    background-color: #888888;
+    border-radius: 5px;
+}
+
+.touch-link {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,432 @@
+swagger: '2.0'
+info:
+  description: The document of Post REST APIs
+  version: 1.0.0
+  title: Post REST APIs
+  contact:
+    name: Quang Huy
+    email: daoquanghuy2702@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'localhost:8080'
+basePath: /post/backend/v1
+schemes:
+  - https
+  - http
+paths:
+  /posts:
+    parameters:
+      - $ref: '#/parameters/Request-Context'
+    get:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Posts
+      summary: getAllPosts
+      operationId: getAllPosts
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/Page'
+        - $ref: '#/parameters/Limit'
+      responses:
+        200:
+          $ref: '#/responses/Posts'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/NoAuthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        404:
+          $ref: '#/responses/NotFound'
+    post:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Posts
+      summary: addPost
+      operationId: addPost
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: 'request'
+          required: true
+          schema:
+            $ref: '#/definitions/PostRequest'
+      responses:
+        200:
+          $ref: '#/responses/Post'
+        201:
+          $ref: '#/responses/Created'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/NoAuthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        404:
+          $ref: '#/responses/NotFound'
+  /posts/{postId}:
+    parameters:
+      - $ref: '#/parameters/Request-Context'
+      - $ref: '#/parameters/PostId'
+    get:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Posts
+      summary: getPostById
+      operationId: getPostById
+      consumes: []
+      produces:
+        - application/json
+      responses:
+        200:
+          $ref: '#/responses/Post'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/NoAuthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        404:
+          $ref: '#/responses/NotFound'
+    put:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Posts
+      summary: updatePostById
+      operationId: updatePostById
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: 'request'
+          required: true
+          schema:
+            $ref: '#/definitions/PostRequest'
+      responses:
+        200:
+          $ref: '#/responses/Post'
+        201:
+          $ref: '#/responses/Created'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/NoAuthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        404:
+          $ref: '#/responses/NotFound'
+    delete:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Posts
+      summary: removePostById
+      operationId: removePostById
+      consumes: []
+      responses:
+        200:
+          $ref: '#/responses/OK'
+        204:
+          $ref: '#/responses/NoContent'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/NoAuthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        404:
+          $ref: '#/responses/NotFound'
+  /posts/search:
+    parameters:
+      - $ref: '#/parameters/Request-Context'
+      - $ref: '#/parameters/Keyword-Search'
+    get:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Posts
+      summary: searchPost
+      operationId: searchPost
+      consumes: []
+      produces:
+        - application/json
+      responses:
+        200:
+          $ref: '#/responses/Posts'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/NoAuthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        404:
+          $ref: '#/responses/NotFound'
+  /contacts:
+    parameters:
+      - $ref: '#/parameters/Request-Context'
+    get:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Contacts
+      summary: getAllContacts
+      operationId: getAllContacts
+      consumes: []
+      produces:
+        - application/json
+      responses:
+        200:
+          $ref: '#/responses/Contacts'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/NoAuthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        404:
+          $ref: '#/responses/NotFound'
+    post:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Contacts
+      summary: addContact
+      operationId: addContact
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: request
+          description: 'request'
+          required: true
+          schema:
+            $ref: '#/definitions/ContactRequest'
+      responses:
+        200:
+          $ref: '#/responses/Contact'
+        201:
+          $ref: '#/responses/Created'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/NoAuthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        404:
+          $ref: '#/responses/NotFound'
+  /contacts/{contactId}:
+    parameters:
+      - $ref: '#/parameters/Request-Context'
+      - $ref: '#/parameters/ContactId'
+    delete:
+      security:
+        - ApiKeyAuth: []
+      tags:
+        - Contacts
+      summary: removeContactById
+      operationId: removeContactById
+      consumes: []
+      responses:
+        200:
+          $ref: '#/responses/OK'
+        204:
+          $ref: '#/responses/NoContent'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/NoAuthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        404:
+          $ref: '#/responses/NotFound'
+definitions:
+  Post:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "030e5438-4d9e-4d41-aa68-ac04b05b7c3d"
+      title:
+        type: string
+        example: "Demo"
+      image:
+        type: string
+        format: uri
+        example: "https://miro.medium.com/max/762/0*nr4qW0MM-0jhsdLw.jpg"
+      content:
+        type: string
+        example: "ahjdhqkfhalfhqohgopq2jadjhflal"
+      category:
+        type: string
+        enum: ["ART", "MUSIC", "TECH", "TRAVEL"]
+        example: "TRAVEL"
+      createAt:
+        type: string
+        format: dateTime
+        example: "2022-07-01 08:57:11"
+      updateAt:
+        type: string
+        format: dateTime
+        example: "2022-07-01 08:57:11"
+  Posts:
+    type: array
+    items:
+      $ref: '#/definitions/Post'
+  PostRequest:
+    required:
+      - title
+      - category
+    title: PostRequest
+    type: object
+    properties:
+      title:
+        type: string
+        example: "Demo"
+      image:
+        type: string
+        format: uri
+        example: "https://miro.medium.com/max/762/0*nr4qW0MM-0jhsdLw.jpg"
+      content:
+        type: string
+        example: "ahjdhqkfhalfhqohgopq2jadjhflal"
+      category:
+        type: string
+        enum: ["ART", "MUSIC", "TECH", "TRAVEL"]
+        example: "TRAVEL"
+  Contact:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "030e5438-4d9e-4d41-aa68-ac04b05b7c3d"
+      name:
+        type: string
+        example: "Quang Huy"
+      email:
+        type: string
+        format: email
+        example: "daoquanghuy2702@gmail.com"
+      message:
+        type: string
+        example: "ahdkahflkwvhkashflqdhjkfgsdk"
+      createAt:
+        type: string
+        format: dateTime
+        example: "2022-07-01 08:57:11"
+  Contacts:
+    type: array
+    items:
+      $ref: '#/definitions/Contact'
+  ContactRequest:
+    required:
+      - name
+      - email
+    title: ContactRequest
+    type: object
+    properties:
+      name:
+        type: string
+        example: "Quang Huy"
+      email:
+        type: string
+        format: email
+        example: "daoquanghuy2702@gmail.com"
+      message:
+        type: string
+        example: "ahdkahflkwvhkashflqdhjkfgsdk"
+responses:
+  Post:
+    description: 'Post response'
+    schema:
+      $ref: '#/definitions/Post'
+  Posts:
+    description: 'Posts response'
+    schema:
+      $ref: '#/definitions/Posts'
+  Contact:
+    description: 'Contact response'
+    schema:
+      $ref: '#/definitions/Contact'
+  Contacts:
+    description: 'Contacts response'
+    schema:
+      $ref: '#/definitions/Contacts'
+  OK:
+    description: '200: OK'
+  Created:
+    description: '201: Created'
+  Accepted:
+    description: '202: Accepted'
+  NoContent:
+    description: '204: No Content'
+  BadRequest:
+    description: '400: Bad Request'
+  NoAuthorized:
+    description: '401: No Authorized'
+  Forbidden:
+    description: '403: Forbidden'
+  NotFound:
+    description: '404: Not Found'
+  InternalServerError:
+    description: '500: Internal Server Error'
+parameters:
+  Request-Context:
+    name: apikey
+    in: header
+    description: 'Request Context'
+    required: true
+    type: string
+  PostId:
+    name: postId
+    in: path
+    description: 'Post Id'
+    required: true
+    type: string
+  ContactId:
+    name: contactId
+    in: path
+    description: 'Contact Id'
+    required: true
+    type: string
+  Keyword-Search:
+    name: term
+    in: query
+    description: 'Keyword Search'
+    required: true
+    type: string
+  Page:
+    name: page
+    in: query
+    description: 'Number Page'
+    type: integer
+    required: false
+  Limit:
+    name: limit
+    in: query
+    description: 'Limit of Page'
+    type: integer
+    required: false
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    type: apiKey
+    name: apiKey
+
+
+  

@@ -1,0 +1,42 @@
+.comment-list {
+    width: 735px;
+    border-radius: 7px;
+    background-color: #ffffff;
+    padding: 35px 25px;
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+}
+
+.comment-info .comment-info__title{
+    font-size: 4rem;
+}
+
+.comment-info p{
+    margin-bottom: 25px;
+    line-height: 2.3rem;
+}
+
+.comment-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+.comment-table td, .comment-table th {
+    border: 1px solid #ddd;
+    padding: 15px;
+  }
+  
+.comment-table th {
+    padding-top: 15px;
+    text-align: left;
+    background-color: #afaaaa;
+}
+
+.comment-table button {
+    padding: 10px;
+    background-color: #afaaaa;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    color: white;
+}

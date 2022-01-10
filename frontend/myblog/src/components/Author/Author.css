@@ -1,0 +1,42 @@
+.author {
+    width: 280px;
+    height: 675px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    padding: 20px;
+}
+
+.author__avatar {
+    width: 70%;
+    height: 168px;
+    margin: 0 auto;
+}
+
+.author__avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.author__info, .author__feature {
+    padding: 25px 0;
+    font-size: 1.6rem;
+    line-height: 2.3rem;
+}
+
+hr {
+    border-top: 1px solid #afaaaa;
+    width: 50%;
+}
+
+.author__contact {
+    padding: 20px 0;
+}
+
+.author__contact__icon {
+    color: #afaaaa;
+    font-size: 3rem;
+    margin-right: 15px;
+}
+
+

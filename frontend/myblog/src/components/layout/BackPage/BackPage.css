@@ -1,0 +1,19 @@
+.back-page button {
+    padding: 10px 25px;
+    background-color: #888888;
+    border-radius: 5px;
+    font-size: 1.8rem;
+    color: white;
+    display: flex;
+}
+
+.back-icon {
+    margin-top: 3px;
+    margin-right: 5px;
+}
+
+.back-link {
+    margin-top: 2px;
+    text-decoration: none;
+    color: white;
+}

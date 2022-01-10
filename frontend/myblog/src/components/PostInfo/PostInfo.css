@@ -1,0 +1,34 @@
+.post-info {
+    width: 735px;
+    border-radius: 7px;
+    background-color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.post-info img {
+    width: 100%;
+    height: 250px;
+    border-radius: 7px 7px 0 0;
+}
+
+.detail-body {
+    padding: 25px;
+}
+
+.detail-body__title {
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+.detail-body__date {
+    margin: 20px 0;
+    text-transform: uppercase;
+    color: #afaaaa;
+    font-size: 1.4rem;
+}
+
+.detail-body__content {
+    margin-top: 15px;
+    font-size: 1.6rem;
+    line-height: 2.3rem;
+}
