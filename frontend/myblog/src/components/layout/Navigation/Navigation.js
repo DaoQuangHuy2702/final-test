@@ -1,26 +1,26 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './Navigation.css';
 
 const Navigation = () => {
     return(     
         <nav className="header__nav">
-            <Link className="header__logo" to="/">Denali</Link>
+            <NavLink className="header__logo" to="/">Denali</NavLink>
             <ul className="header__menu">
                 <li className="header__item">
-                    <Link className="header__item__link" to="/">Home</Link>
+                    <NavLink className={(navData) => (navData.isActive ? 'header__item__link active' : 'header__item__link')} to="/">Home</NavLink>
                 </li>
                 <li className="header__item">
-                    <Link className="header__item__link" to="/about">About</Link>
+                    <NavLink className="header__item__link" to="/about">About</NavLink>
                 </li>
                 <li className="header__item">
-                    <Link className="header__item__link" to="/contact">Contact</Link>
+                    <NavLink className="header__item__link" to="/contact">Contact</NavLink>
                 </li>
                 <li className="header__item">
-                    <Link className="header__item__link" to="/post">Post</Link>
+                    <NavLink className="header__item__link" to="/post">Post</NavLink>
                 </li>
                 <li className="header__item">
-                    <Link className="header__item__link" to="/comments">Comments</Link>
+                    <NavLink className="header__item__link" to="/comments">Comments</NavLink>
                 </li>
             </ul>
         </nav>

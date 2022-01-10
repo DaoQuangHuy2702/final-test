@@ -35,6 +35,12 @@
     font-size: 1.8rem;
 }
 
+.header__item__link.active {
+    text-decoration: none;
+    color: #333333;
+    font-size: 1.8rem;
+}
+
 .header__item__link:hover, .header__item__link:active{
     color: #333333;
 }
