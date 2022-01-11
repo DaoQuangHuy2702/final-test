@@ -25,7 +25,7 @@ public class PostServices {
 
     public Posts getAllPosts(Integer page, Integer limit) {
         if(page != null && limit != null) {
-            return mapper.mapPostsFromPostEntities(repo.findAll().subList(page, page + limit));
+            return mapper.mapPostsFromPostEntities(slice(repo.findAll(), page, limit));
         }
         return mapper.mapPostsFromPostEntities(repo.findAll());
     }
@@ -54,5 +54,23 @@ public class PostServices {
     public void removePostById(String id) {
         PostEntity postEntity = repo.getOne(id);
         repo.delete(postEntity);
+    }
+
+    private List<PostEntity> slice(List<PostEntity> list, int page, int limit) {
+        List<PostEntity> result = new ArrayList<>();
+        int start = page;
+        int end;
+        if(start >= 0 && start < list.size()) {
+            if(start + limit < list.size()) {
+                end = start + limit;
+            }
+            else {
+                end = list.size();
+            }
+            for(int i = start; i < end; i++) {
+                result.add(list.get(i));
+            }
+        }
+        return result;
     }
 }
