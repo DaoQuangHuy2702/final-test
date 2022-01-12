@@ -26,6 +26,7 @@ public class ContactServices {
 
     public Contact addContact(ContactRequest contactReq) {
         ContactEntity contactEntity = mapper.mapContactEntityFromContactRequest(contactReq);
+
         ContactEntity saved = repo.save(contactEntity);
 
         return mapper.mapContactFromContactEntity(saved);

@@ -1,7 +1,7 @@
 import React from 'react';
 import './ContactList.css';
 
-const ContactList = () => {
+const ContactList = ({comments, onDeleteComment}) => {
     return(
         <div className="comment-list">
             <div className="comment-info">
@@ -22,13 +22,17 @@ const ContactList = () => {
                         <th style={{width: '40%'}}>Content</th>
                         <th style={{width: '10%'}}>Action</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                        <td>Germany</td>
-                        <td><button>Delete</button></td>
-                    </tr>
+                    {
+                        comments.map((comment, index) => {
+                            return  <tr>
+                                        <td>{index + 1}</td>
+                                        <td>{comment.name}</td>
+                                        <td>{comment.email}</td>
+                                        <td>{comment.message}</td>
+                                        <td><button onClick={() => onDeleteComment(comment.id)}>Delete</button></td>
+                                    </tr>
+                        })
+                    }
                 </table>
             </div>
         </div>

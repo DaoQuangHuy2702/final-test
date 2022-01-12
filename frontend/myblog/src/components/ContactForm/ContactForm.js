@@ -1,7 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ContactForm.css';
+import axios from 'axios';
 
 const ContactForm = () => {
+    const [contact, setContact] = useState({
+        name: "",
+        email: "",
+        message: ""
+    });
+
+    const handleChange = (event) => {
+        setContact({
+            ...contact,
+            [event.target.name] : event.target.value
+        })
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        console.log(contact);
+
+        axios.post('http://localhost:8080/post/backend/v1/contacts', {
+            ...contact
+        }, 
+        {
+            headers: {
+                apikey: "2347edfd-c55c-4f59-96ee-600492f904f3",
+                "Access-Control-Allow-Origin": "*"
+            }
+        }).then((request) => {
+            setContact(request.data);
+            alert('Add Contact Successful');
+            console.log(request)
+        }).catch((error) => {console.log(error)})
+    }
+
     return(
         <div className="contact">
             <div className="contact-info">
@@ -19,14 +53,14 @@ const ContactForm = () => {
                 </p>
             </div>
             <div>
-                <form className="contact-form">
+                <form className="contact-form" onSubmit={handleSubmit}>
                     <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="name" placeholder="Enter your name"/>
+                    <input type="text" name="name" id="name" placeholder="Enter your name" value={contact.name} onChange={handleChange}/>
                     <label htmlFor="email">Email Address</label>
-                    <input type="text" name="email" id="email" placeholder="Enter your email address"/>
+                    <input type="text" name="email" id="email" placeholder="Enter your email address" value={contact.email} onChange={handleChange}/>
                     <label htmlFor="message">Email Address</label>
-                    <textarea rows="5" name="message" id="message" placeholder="Enter your message"></textarea>
-                    <input type="submit" value="Submit" />
+                    <textarea rows="5" name="message" id="message" placeholder="Enter your message" value={contact.message} onChange={handleChange}></textarea>
+                    <input type="submit" value="Submit"/>
                 </form>
             </div>
         </div>
