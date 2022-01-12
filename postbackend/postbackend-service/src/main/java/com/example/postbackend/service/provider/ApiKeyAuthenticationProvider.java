@@ -31,7 +31,8 @@ public class ApiKeyAuthenticationProvider implements AuthenticationProvider {
             throw new InsufficientAuthenticationException("No API Key in request");
         }
         else {
-            Optional<ApiKeyEntity> apiKeyOptional = repo.findByKey(apiKey);
+            Optional<ApiKeyEntity> apiKeyOptional = this.repo.findByKey(apiKey);
+
             if(apiKeyOptional.isPresent()) {
                 return new ApiKeyAuthenticationToken(apiKey, true);
             }

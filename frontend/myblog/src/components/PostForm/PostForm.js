@@ -15,19 +15,19 @@ const PostForm = () => {
             </div>
             <div>
                 <form className="post-form">
-                    <label for="username">Title</label>
-                        <input type="text" name="username" id="username" placeholder="Enter your name"/>
-                    <label for="email">Image URL</label>
-                        <input type="text" name="email" id="email" placeholder="Enter your email address"/>
-                    <label for="type">Type</label>
-                        <select id="type" name="type">
+                    <label htmlFor="title">Title</label>
+                        <input type="text" name="title" id="title" placeholder="Enter post title"/>
+                    <label htmlFor="image">Image URL</label>
+                        <input type="text" name="image" id="image" placeholder="Enter post image url"/>
+                    <label htmlFor="category">Type</label>
+                        <select id="category" name="category">
                             <option value="ART">ART</option>
                             <option value="MUSIC">MUSIC</option>
                             <option value="TECH">TECH</option>
                             <option value="TRAVEL">TRAVEL</option>
                         </select>
-                    <label for="message">Content</label>
-                        <textarea rows="5" name="message" id="message" placeholder="Enter your message"></textarea>
+                    <label htmlFor="content">Content</label>
+                        <textarea rows="5" name="content" id="content" placeholder="Enter post content"></textarea>
                     <input type="submit" value="Submit" />
                 </form>
             </div>

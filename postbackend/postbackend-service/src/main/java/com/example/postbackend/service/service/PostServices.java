@@ -6,6 +6,7 @@ import com.example.postbackend.api.model.Posts;
 import com.example.postbackend.service.entity.PostEntity;
 import com.example.postbackend.service.mapper.PostMapper;
 import com.example.postbackend.service.repository.PostRepository;
+import com.example.postbackend.service.search.PostSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +17,13 @@ import java.util.List;
 public class PostServices {
     private final PostRepository repo;
     private final PostMapper mapper;
+    private final PostSearch postSearch;
 
     @Autowired
-    public PostServices(PostRepository repo, PostMapper mapper) {
+    public PostServices(PostRepository repo, PostMapper mapper, PostSearch postSearch) {
         this.repo = repo;
         this.mapper = mapper;
+        this.postSearch = postSearch;
     }
 
     public Posts getAllPosts(Integer page, Integer limit) {
@@ -56,17 +59,15 @@ public class PostServices {
         repo.delete(postEntity);
     }
 
+    public Posts searchPost(String term) {
+        return mapper.mapPostsFromPostEntities(postSearch.searchPost(term));
+    }
+
     private List<PostEntity> slice(List<PostEntity> list, int page, int limit) {
         List<PostEntity> result = new ArrayList<>();
         int start = page;
-        int end;
         if(start >= 0 && start < list.size()) {
-            if(start + limit < list.size()) {
-                end = start + limit;
-            }
-            else {
-                end = list.size();
-            }
+            int end = Math.min(start + limit, list.size());
             for(int i = start; i < end; i++) {
                 result.add(list.get(i));
             }

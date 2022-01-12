@@ -25,10 +25,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests().anyRequest().authenticated().and().addFilterBefore(
-                new ApiKeyAuthenticationFilter(authenticationManager()), AnonymousAuthenticationFilter.class
-        ).csrf().disable();
+    protected void configure(HttpSecurity httpSecurity) throws Exception{
+        httpSecurity
+                .cors().and()
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .addFilterBefore(
+                        new ApiKeyAuthenticationFilter(authenticationManager()),
+                        AnonymousAuthenticationFilter.class).csrf().disable()
+                .httpBasic();
     }
 
     @Bean

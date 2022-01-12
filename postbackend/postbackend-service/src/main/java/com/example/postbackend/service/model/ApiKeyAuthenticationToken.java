@@ -6,7 +6,7 @@ import org.springframework.security.core.Transient;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 @Transient
-public class ApiKeyAuthenticationToken extends AbstractAuthenticationToken {
+public class ApiKeyAuthenticationToken extends AbstractAuthenticationToken{
     private String apiKey;
 
     public ApiKeyAuthenticationToken(String apiKey, boolean authenticated) {

@@ -4,7 +4,9 @@ import com.example.postbackend.api.PostsApi;
 import com.example.postbackend.api.model.Post;
 import com.example.postbackend.api.model.PostRequest;
 import com.example.postbackend.api.model.Posts;
+import com.example.postbackend.service.search.HibernateSearchUtil;
 import com.example.postbackend.service.service.PostServices;
+import com.example.postbackend.service.validator.PostSearchValidator;
 import com.example.postbackend.service.validator.PostValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,11 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class PostController implements PostsApi {
     private final PostServices service;
     private final PostValidator validator;
+    private final PostSearchValidator postSearchValidator;
 
     @Autowired
-    public PostController(PostServices service, PostValidator validator) {
+    public PostController(PostServices service, PostValidator validator, PostSearchValidator postSearchValidator) {
         this.service = service;
         this.validator = validator;
+        this.postSearchValidator = postSearchValidator;
     }
 
     @Override
@@ -61,5 +65,15 @@ public class PostController implements PostsApi {
         service.removePostById(postId);
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Posts> searchPost(String apikey, String term) {
+        term = HibernateSearchUtil.decodeUrl(term);
+
+        postSearchValidator.validateTermSearch(term);
+        Posts response = service.searchPost(term);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
