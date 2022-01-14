@@ -9,6 +9,10 @@ const PostItem = ({post}) => {
         return d.toDateString();
     }
 
+    const subContent = (content) => {
+        return content.substring(0, 200);
+    }
+
     return(
         <div className="post-item">
             <div className="post-image">
@@ -22,7 +26,7 @@ const PostItem = ({post}) => {
                     <p>{convertToDate(post.createAt)}  |  {post.category}</p>
                 </div>
                 <div className="post-body__content">
-                    <p>{post.content} <Link className="post-body__link" to={`/posts/${post.id}`}>Read more...</Link>
+                    <p>{subContent(post.content)} <Link className="post-body__link" to={`/posts/${post.id}`}>Read more...</Link>
                     </p>
                 </div>
             </div>

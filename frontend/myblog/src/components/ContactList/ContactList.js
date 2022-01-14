@@ -25,11 +25,11 @@ const ContactList = ({comments, onDeleteComment}) => {
                     {
                         comments.map((comment, index) => {
                             return  <tr>
-                                        <td>{index + 1}</td>
-                                        <td>{comment.name}</td>
-                                        <td>{comment.email}</td>
-                                        <td>{comment.message}</td>
-                                        <td><button onClick={() => onDeleteComment(comment.id)}>Delete</button></td>
+                                        <td style={{width: '5%'}}>{index + 1}</td>
+                                        <td style={{width: '20%'}}>{comment.name}</td>
+                                        <td style={{width: '25%'}}>{comment.email}</td>
+                                        <td style={{width: '40%'}}>{comment.message}</td>
+                                        <td style={{width: '10%'}}><button onClick={() => onDeleteComment(comment.id)}>Delete</button></td>
                                     </tr>
                         })
                     }

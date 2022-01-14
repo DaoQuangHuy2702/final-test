@@ -42,3 +42,8 @@
     color: #ffffff;
     font-size: 1.6rem;
 }
+
+.update-link {
+    color: white;
+    text-decoration: none;
+}

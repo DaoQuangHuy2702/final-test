@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import './PostForm.css';
+import React, { useEffect, useState } from 'react';
+import './PostUpdateForm.css';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 
-const PostForm = () => {
+const PostUpdateForm = ({postUpdate}) => {
     const [post, setPost] = useState({
+        id: "",
         title: "",
-        image: "",
         content: "",
-        category: "ART"
-    })
+        category: ""
+    });
     const [redirect, setRedirect] = useState(false);
 
     const onHandleChange = (event) => {
@@ -24,7 +24,7 @@ const PostForm = () => {
 
         console.log(post);
 
-        axios.post('http://localhost:8080/post/backend/v1/posts', {
+        axios.put(`http://localhost:8080/post/backend/v1/posts/${post.id}`, {
             ...post
         }, 
         {
@@ -33,10 +33,14 @@ const PostForm = () => {
                 "Access-Control-Allow-Origin": "*"
             }
         }).then((request) => {
-            alert('Add Post Successful');
+            alert('Update Post Successful');
             setRedirect(true);
         }).catch((error) => {alert(error)})
     }
+
+    useEffect(() => {
+        setPost(postUpdate);
+    },[postUpdate])
 
     return(
         <div className="add-post">
@@ -44,7 +48,7 @@ const PostForm = () => {
                 redirect ? <Navigate to="/"/> :
                 <div>
                     <div className="add-info">
-                        <p className="add-info__title">Add Post</p>
+                        <p className="add-info__title">Update Post</p>
                         <p>
                             Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consecteur ac,
                             vestibulum at eros. Nulla vitae elit libero, apharetra augue. Nulla vitae elit libero, apharetra augue.
@@ -55,9 +59,9 @@ const PostForm = () => {
                     <div>
                         <form className="post-form" onSubmit={handleSubmit}>
                             <label htmlFor="title">Title</label>
-                                <input type="text" name="title" id="title" value={post.title} onChange={onHandleChange} placeholder="Enter post title"/>
+                                <input type="text" name="title" id="title" defaultValue={post.title} onChange={onHandleChange} placeholder="Enter post title"/>
                             <label htmlFor="image">Image URL</label>
-                                <input type="text" name="image" id="image" value={post.image} onChange={onHandleChange} placeholder="Enter post image url"/>
+                                <input type="text" name="image" id="image" defaultValue={post.image} onChange={onHandleChange} placeholder="Enter post image url"/>
                             <label htmlFor="category">Category</label>
                                 <select id="category" name="category" defaultValue={post.category} onChange={onHandleChange}>
                                     <option selected={post.category === "ART"} value="ART">ART</option>
@@ -66,14 +70,14 @@ const PostForm = () => {
                                     <option selected={post.category === "TRAVEL"} value="TRAVEL">TRAVEL</option>
                                 </select>
                             <label htmlFor="content">Content</label>
-                                <textarea rows="5" name="content" id="content" value={post.content} onChange={onHandleChange} placeholder="Enter post content"></textarea>
+                                <textarea rows="5" name="content" id="content" defaultValue={post.content} onChange={onHandleChange} placeholder="Enter post content"></textarea>
                             <input type="submit" value="Submit" />
                         </form>
                     </div>
                 </div>
-                }
+            }
         </div>
     )
 }
 
-export default PostForm;
+export default PostUpdateForm;

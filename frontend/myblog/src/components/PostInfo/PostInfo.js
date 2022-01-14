@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './PostInfo.css';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PostInfo = ({post}) => {
     const [redirect, setRedirect] = useState(false);
@@ -40,7 +41,7 @@ const PostInfo = ({post}) => {
                                 {post.content}
                             </p>
                         </div>
-                        <button className="detail-button">Update</button>
+                        <button className="detail-button"><Link className="update-link" to={`/post/${post.id}`}>Update</Link></button>
                         <button className="detail-button" onClick={onDeletePost}>Delete</button>
                     </div>
                 </div>
