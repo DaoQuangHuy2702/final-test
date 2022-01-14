@@ -35,15 +35,6 @@ public class ContactMapper {
         return to;
     }
 
-    public ContactEntity mapContactEntityFromContactRequest(String id, ContactRequest from) {
-        ContactEntity to = repo.getOne(id);
-
-        to.setName(from.getName());
-        to.setEmail(from.getEmail());
-        to.setMessage(from.getMessage());
-
-        return to;
-    }
 
     public Contact mapContactFromContactEntity(ContactEntity from) {
         Contact to = new Contact();

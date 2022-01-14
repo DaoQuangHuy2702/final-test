@@ -53,6 +53,8 @@ const HomePage = () => {
             setPosts(request.data);
             setIsSearch(true);
             console.log(request)
+        }).catch((error) => {
+            alert(error);
         })
     }
 

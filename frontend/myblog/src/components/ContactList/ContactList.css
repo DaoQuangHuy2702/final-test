@@ -20,11 +20,14 @@
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    table-layout:fixed;
   }
   
 .comment-table td, .comment-table th {
     border: 1px solid #ddd;
     padding: 15px;
+    word-wrap: break-word;        
+    overflow-wrap: break-word;
   }
   
 .comment-table th {

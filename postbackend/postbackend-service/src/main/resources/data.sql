@@ -1,7 +1,7 @@
 INSERT INTO POST VALUES ('2347edfd-c11c-4f59-96ee-600492f933f3',
                          'ReactJS Become a professional in web app development',
                          'https://images-na.ssl-images-amazon.com/images/I/41ith8XYqwS._SX331_BO1,204,203,200_.jpg',
-                         ' industrys standard dummy texter since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic types',
+                         'industrys standard dummy texter since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic types',
                          'ART',
                          '2022-07-01 08:57:11',
                          '2022-07-01 08:57:11');
