@@ -25,7 +25,7 @@ public class PostServiceTest {
     PostSearch postSearch;
 
     @Test
-    public void getAllPost() {
+    public void getAllPosts() {
         service.getAllPosts(1, 4);
     }
 
